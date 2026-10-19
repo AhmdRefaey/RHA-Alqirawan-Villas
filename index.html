@@ -54,8 +54,145 @@
 
   <h2>سجل اهتمامك</h2>
 
-  <p>قريبًا يمكنك تسجيل اهتمامك بالمشروع.</p>
+ <form id="interestForm" style="max-width:500px;margin:25px auto;text-align:right;">
 
+  <label for="name">الاسم الكامل *</label>
+
+  <input id="name" name="name" type="text"
+
+    placeholder="اكتب اسمك الكامل"
+
+    autocomplete="name" required>
+
+  <label for="phone">رقم الجوال السعودي *</label>
+
+  <input id="phone" name="phone" type="tel"
+
+    inputmode="numeric" dir="ltr"
+
+    placeholder="05XXXXXXXX"
+
+    pattern="05[0-9]{8}"
+
+    maxlength="10" required>
+
+  <label for="time">الوقت المناسب للاتصال (اختياري)</label>
+
+  <select id="time" name="time">
+
+    <option value="">حدد الوقت المناسب</option>
+
+    <option>صباحًا</option>
+
+    <option>ظهرًا</option>
+
+    <option>مساءً</option>
+
+    <option>أي وقت</option>
+
+  </select>
+
+  <label for="notes">ملاحظات (اختياري)</label>
+
+  <textarea id="notes" name="notes"
+
+    rows="4" maxlength="500"
+
+    placeholder="اكتب ملاحظاتك"></textarea>
+
+  <label style="display:flex;align-items:center;gap:8px;font-weight:normal;">
+
+    <input type="checkbox" required style="width:auto;">
+
+    أوافق على استخدام بياناتي للتواصل معي بخصوص مشروع فلل رها القيروان.
+
+  </label>
+
+  <button type="submit">تسجيل الاهتمام</button>
+
+  <p id="formMessage" role="status"></p>
+
+</form>
+
+<style>
+
+#interestForm label {
+
+  display:block;
+
+  margin:18px 0 8px;
+
+  font-weight:bold;
+
+  color:#020202;
+
+}
+
+#interestForm input:not([type="checkbox"]),
+
+#interestForm select,
+
+#interestForm textarea {
+
+  box-sizing:border-box;
+
+  display:block;
+
+  width:100%;
+
+  padding:15px;
+
+  border:1px solid #c6b9a6;
+
+  border-radius:9px;
+
+  background:white;
+
+  font:inherit;
+
+  margin-bottom:15px;
+
+}
+
+#interestForm button {
+
+  width:100%;
+
+  padding:16px;
+
+  background:#80664e;
+
+  color:white;
+
+  border:0;
+
+  border-radius:9px;
+
+  font:inherit;
+
+  font-weight:bold;
+
+  cursor:pointer;
+
+}
+
+</style>
+
+<script>
+
+document.getElementById("interestForm")
+
+  .addEventListener("submit", function(e) {
+
+    e.preventDefault();
+
+    document.getElementById("formMessage").textContent =
+
+      "الاستمارة تجريبية حاليًا، وسيتم تفعيل استقبال التسجيلات قريبًا.";
+
+  });
+
+</script>
 </body>
 
 </html>
