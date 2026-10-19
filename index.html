@@ -180,15 +180,71 @@
 
 <script>
 
+const scriptURL = "https://script.google.com/macros/s/AKfycby7z-SvD0vca7FaKxhSHWjoNpWyy1GhNhGB4aq5SmMaza1r0YKWRNK17mDt9fKAjuHkWQ/exec";
+
 document.getElementById("interestForm")
 
-  .addEventListener("submit", function(e) {
+  .addEventListener("submit", async function(e) {
 
     e.preventDefault();
 
-    document.getElementById("formMessage").textContent =
+    const form = this;
 
-      "الاستمارة تجريبية حاليًا، وسيتم تفعيل استقبال التسجيلات قريبًا.";
+    const button = form.querySelector('button[type="submit"]');
+
+    const message = document.getElementById("formMessage");
+
+    const data = {
+
+      name: form.elements["name"].value,
+
+      phone: form.elements["phone"].value,
+
+      contactTime: form.elements["time"].value,
+
+      notes: form.elements["notes"].value
+
+    };
+
+    button.disabled = true;
+
+    message.textContent = "جارٍ إرسال البيانات...";
+
+    try {
+
+      await fetch(scriptURL, {
+
+        method: "POST",
+
+        mode: "no-cors",
+
+        headers: {
+
+          "Content-Type": "text/plain;charset=utf-8"
+
+        },
+
+        body: JSON.stringify(data)
+
+      });
+
+      message.textContent =
+
+        "تم إرسال الطلب. جارٍ التحقق من تسجيله.";
+
+      form.reset();
+
+    } catch (error) {
+
+      message.textContent =
+
+        "تعذر إرسال الطلب. حاول مرة أخرى.";
+
+    } finally {
+
+      button.disabled = false;
+
+    }
 
   });
 
