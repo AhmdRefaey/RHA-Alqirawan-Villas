@@ -76,21 +76,51 @@
 
     maxlength="10" required>
 
-  <label for="time">الوقت المناسب للاتصال (اختياري)</label>
+  <label for="area">ما هي المساحة التي تناسبك؟ *</label>
 
-  <select id="time" name="time">
+<select id="area" name="area" required>
 
-    <option value="">حدد الوقت المناسب</option>
+  <option value="">اختر المساحة المناسبة</option>
 
-    <option>صباحًا</option>
+  <option value="250 م²">250 م²</option>
 
-    <option>ظهرًا</option>
+  <option value="300 م²">300 م²</option>
 
-    <option>مساءً</option>
+  <option value="427 م²">427 م²</option>
 
-    <option>أي وقت</option>
+  <option value="لم أحدد المساحة بعد">لم أحدد المساحة بعد</option>
 
-  </select>
+  <option value="أخرى">أخرى</option>
+
+</select>
+  <label for="contactMethod">ما هي طريقة التواصل المفضلة لديك؟ *</label>
+
+<select id="contactMethod" name="contactMethod" required>
+
+  <option value="">اختر طريقة التواصل</option>
+
+  <option value="واتساب">واتساب</option>
+
+  <option value="اتصال هاتفي">اتصال هاتفي</option>
+
+  <option value="لا مانع من الطريقتين">لا مانع من الطريقتين</option>
+
+</select> 
+  <label for="time">ما الوقت المناسب للتواصل معك؟ *</label>
+
+<select id="time" name="time" required>
+
+  <option value="">اختر الوقت المناسب</option>
+
+  <option value="صباحاً (9 ص - 12 ظهراً)">صباحاً (9 ص - 12 ظهراً)</option>
+
+  <option value="بعد الظهر (12 - 5 م)">بعد الظهر (12 - 5 م)</option>
+
+  <option value="مساءً (5 - 9 م)">مساءً (5 - 9 م)</option>
+
+  <option value="أي وقت مناسب">أي وقت مناسب</option>
+
+</select>
 
   <label for="notes">ملاحظات (اختياري)</label>
 
@@ -199,7 +229,8 @@ document.getElementById("interestForm")
       name: form.elements["name"].value,
 
       phone: form.elements["phone"].value,
-
+area: form.elements["area"].value,
+contactMethod: form.elements["contactMethod"].value,
       contactTime: form.elements["time"].value,
 
       notes: form.elements["notes"].value
